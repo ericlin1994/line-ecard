@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LINE 電子名片模板｜不用官方帳號、不用月費，30 分鐘做好</title>
+<meta name="description" content="填一個設定檔、上傳照片、跑一行指令，就有自己的名片網頁 + 可在 LINE 裡滑動分享的卡片。附完整中文說明書。">
+<meta property="og:title" content="LINE 電子名片模板｜讓你的名片被一直轉傳下去">
+<meta property="og:description" content="不用官方帳號、不用月費。30 分鐘做出可滑動、可轉發的 LINE 電子名片。">
+<meta property="og:image" content="img/cover-1.png">
+<meta property="og:type" content="product">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💳</text></svg>">
+<style>
+  :root{
+    --navy:#253043; --dark:#1D2534; --copper:#C4835A; --copper-d:#996646;
+    --beige:#F5F1E8; --muted:#8A8F98; --line:#E3DED4; --white:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",-apple-system,sans-serif;
+    color:var(--navy); background:var(--beige); line-height:1.75;
+    font-size:16px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;background:var(--beige);min-height:100dvh;display:flex;flex-direction:column}
+  section{padding:44px 22px}
+  h1{font-size:34px;line-height:1.35;letter-spacing:-.5px}
+  h2{font-size:23px;margin-bottom:16px;letter-spacing:-.3px}
+  h3{font-size:18px;margin-bottom:6px}
+  p{margin-bottom:12px}
+  .lede{font-size:17px;color:#4a5568}
+
+  /* ── Hero ── */
+  .hero{background:linear-gradient(170deg,var(--navy),var(--dark));color:var(--white);padding:38px 22px 34px}
+  .kicker{color:var(--copper);font-weight:700;font-size:14px;letter-spacing:2px;margin-bottom:14px}
+  .hero h1{color:var(--white)}
+  .hero h1 em{color:var(--copper);font-style:normal}
+  .hero .lede{color:#cfd6e0;margin-top:16px}
+  .hero img{width:100%;border-radius:14px;margin-top:24px;display:block;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+
+  /* ── 按鈕 ── */
+  .btns{display:flex;flex-direction:column;gap:10px;margin-top:26px}
+  .btn{display:block;text-align:center;padding:16px 20px;border-radius:14px;font-weight:700;
+       font-size:17px;text-decoration:none;transition:transform .12s, filter .12s;cursor:pointer;border:0}
+  .btn.primary{background:linear-gradient(180deg,var(--copper),var(--copper-d));color:var(--white);
+       border:1px solid #8a5a3c;box-shadow:0 5px 0 #7d4f34}
+  .btn.primary:active{transform:translateY(4px);box-shadow:0 1px 0 #7d4f34}
+  .btn.ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.35)}
+  .btn.ghost:active{background:rgba(255,255,255,.08)}
+  .btn .sub{display:block;font-weight:400;font-size:13px;opacity:.85;margin-top:2px}
+
+  /* ── 卡片 ── */
+  .card{background:var(--white);border-radius:16px;padding:22px;margin-bottom:14px;
+        box-shadow:0 2px 10px rgba(37,48,67,.06)}
+  .compare{display:grid;gap:12px;grid-template-columns:1fr}
+  @media(min-width:560px){.compare{grid-template-columns:1fr 1fr}}
+  .cmp{border-radius:14px;padding:18px 20px;font-size:15px}
+  .cmp.bad{background:#fdf4f2;border:1.5px solid #f0d5cf}
+  .cmp.good{background:#f2f8f3;border:1.5px solid #cfe6d4}
+  .cmp h3{margin-bottom:10px;font-size:16px}
+  .cmp ul{list-style:none;font-size:15px}
+  .cmp li{padding-left:20px;position:relative;margin-bottom:6px}
+  .cmp.bad li:before{content:"✕";position:absolute;left:0;color:#c0392b;font-weight:700}
+  .cmp.good li:before{content:"✓";position:absolute;left:0;color:#27794a;font-weight:700}
+
+  ul.plain{list-style:none}
+  ul.plain li{padding-left:26px;position:relative;margin-bottom:9px}
+  ul.plain li:before{content:"✔";position:absolute;left:0;color:var(--copper);font-weight:700}
+
+  .price-tag{font-size:30px;font-weight:800;color:var(--navy);letter-spacing:-.5px}
+  .price-tag s{font-size:17px;color:var(--muted);font-weight:400;margin-left:8px}
+  .badge{display:inline-block;background:#f6e7dc;color:#8a5a3c;font-size:12.5px;
+      font-weight:700;padding:3px 10px;border-radius:99px;margin-left:8px;vertical-align:middle}
+  .tier{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .tier .who{font-size:13.5px;color:var(--muted)}
+  .pick{border:2px solid var(--copper);position:relative}
+  .pick:before{content:"最多人選";position:absolute;top:-11px;left:18px;background:var(--copper);
+      color:#fff;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:99px}
+
+  details{background:var(--white);border-radius:14px;padding:16px 20px;margin-bottom:10px;
+      box-shadow:0 2px 10px rgba(37,48,67,.05)}
+  details summary{font-weight:700;cursor:pointer;font-size:16px;list-style:none}
+  details summary::-webkit-details-marker{display:none}
+  details summary:after{content:"＋";float:right;color:var(--copper);font-weight:700}
+  details[open] summary:after{content:"－"}
+  details p{margin-top:10px;color:#4a5568;font-size:15px}
+
+  .note{background:#fffaf0;border:1.5px solid #f0e2c8;border-radius:12px;padding:14px 18px;
+      font-size:14.5px;color:#7a5c22}
+  .steps{counter-reset:s;list-style:none}
+  .steps li{counter-increment:s;padding-left:38px;position:relative;margin-bottom:12px}
+  .steps li:before{content:counter(s);position:absolute;left:0;top:1px;width:25px;height:25px;
+      background:var(--navy);color:#fff;border-radius:50%;font-size:13.5px;font-weight:700;
+      display:flex;align-items:center;justify-content:center}
+  footer{background:var(--dark);color:#9aa4b2;font-size:13.5px;text-align:center;padding:30px 22px;margin-top:auto}
+  footer a{color:#c3ccd9}
+  .sticky{position:sticky;bottom:0;background:rgba(245,241,232,.94);backdrop-filter:blur(8px);
+      border-top:1px solid var(--line);padding:11px 18px calc(11px + env(safe-area-inset-bottom));
+      display:flex;gap:12px;align-items:center}
+  .sticky .p{font-weight:800;font-size:19px;white-space:nowrap}
+  .sticky .p small{display:block;font-weight:400;font-size:11.5px;color:var(--muted)}
+  .sticky .btn{flex:1;padding:13px 16px;font-size:16px;box-shadow:0 4px 0 #7d4f34}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ═══════════ Hero ═══════════ -->
+  <div class="hero">
+    <div class="kicker">LINE 電子名片模板</div>
+    <h1>把你的名片<br>變成<em>會被一直轉傳</em>的卡片</h1>
+    <p class="lede">收到的人可以在 LINE 裡左右滑動看你的服務、作品、聯絡方式，覺得不錯就一鍵轉給別人——你的名片自己跑業務。</p>
+    <img src="img/cover-1.png" alt="LINE 電子名片示意：深色卡片加上三顆功能按鈕">
+    <div class="btns">
+      <a class="btn primary" id="buyBtnTop" href="#">立即購買 NT$1,490
+        <span class="sub">一次買斷・沒有月費・早鳥 NT$990（前 20 名）</span></a>
+      <a class="btn ghost" href="https://ericlin1994.github.io/line-ecard-demo/" target="_blank" rel="noopener">先看示範（用 LINE 開啟可試分享）</a>
+    </div>
+  </div>
+
+  <!-- ═══════════ 痛點對比 ═══════════ -->
+  <section>
+    <h2>為什麼不用做 LINE 官方帳號？</h2>
+    <div class="compare">
+      <div class="cmp bad">
+        <h3>傳統做法：官方帳號</h3>
+        <ul>
+          <li>要申請、要審核、要身分驗證</li>
+          <li>月費，而且訊息數有上限</li>
+          <li>名片只存在聊天室裡，不好轉傳</li>
+          <li>想改版型？權限在官方手上</li>
+        </ul>
+      </div>
+      <div class="cmp good">
+        <h3>這套：LIFF 分享</h3>
+        <ul>
+          <li>用你現有的個人 LINE 帳號就能發</li>
+          <li>沒有月費、沒有訊息上限</li>
+          <li>收到的人一鍵就能再轉給別人</li>
+          <li>原始碼在你手上，配色自己改</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ 賣點 ═══════════ -->
+  <section style="padding-top:0">
+    <img src="img/cover-2.png" alt="三個賣點：30 分鐘、不用申請 LIFF、沒有月費" style="width:100%;border-radius:14px">
+  </section>
+
+  <!-- ═══════════ 你拿到什麼 ═══════════ -->
+  <section style="padding-top:0">
+    <h2>你會拿到什麼</h2>
+    <div class="card">
+      <ul class="plain">
+        <li><b>一個設定檔 <code>client.json</code></b>：公司名、電話、地址、服務項目、標語、配色全填在這裡，換客戶只改這一個檔</li>
+        <li><b>卡片產生器</b>：自動做出 6 張可滑動的 LINE 卡片（含卡片主視覺海報）</li>
+        <li><b>一頁式品牌網頁</b>：給不熟 LINE 的客戶看的版本，手機優先</li>
+        <li><b>中文圖文說明書</b>：從零到上線，不需要寫程式，卡住有錯誤對照表</li>
+        <li><b>上線前自動檢查</b>：卡片格式檢查、洩漏掃描、語法檢查（LINE 對不合法的卡片會<b>默默丟掉</b>，這支就是防這個）</li>
+        <li><b>使用授權條款</b>：可以做客戶的案子，不能轉賣模板本身</li>
+      </ul>
+    </div>
+    <div class="note">
+      <b>你需要準備：</b>一台電腦、免費 GitHub 帳號、個人 LINE 帳號、30 分鐘。會複製貼上就好。
+    </div>
+  </section>
+
+  <!-- ═══════════ 三步驟 ═══════════ -->
+  <section style="padding-top:0">
+    <h2>怎麼做？三個步驟</h2>
+    <ol class="steps">
+      <li><b>改一個檔案</b>——把 <code>client.json</code> 裡的示範資料換成你的（說明書有逐欄對照）。</li>
+      <li><b>放照片、跑一行指令</b>——卡片圖片、海報、名片網頁全部自動產生。</li>
+      <li><b>上傳到 GitHub Pages</b>——免費，你的名片網站就有自己的網址了，接著就能在 LINE 裡分享。</li>
+    </ol>
+    <p class="lede" style="margin-top:14px">不用申請 LIFF、不用碰 LINE 開發者後台——分享功能已經用共用服務接好了，你只要填自己的網址。</p>
+  </section>
+
+  <!-- ═══════════ 定價 ═══════════ -->
+  <section style="padding-top:0" id="buy">
+    <h2>選擇方案</h2>
+
+    <div class="card pick">
+      <div class="tier">
+        <div><h3>自助版 <span class="badge">早鳥 NT$990・前 20 名</span></h3>
+          <div class="who">會複製貼上、想自己搞定的人</div></div>
+        <div class="price-tag">NT$1,490<s>NT$1,990</s></div>
+      </div>
+      <p style="margin:12px 0 0;font-size:14.5px;color:#4a5568">買斷・一次交付全部檔案與說明書・同版本免費更新</p>
+    </div>
+
+    <div class="card">
+      <div class="tier">
+        <div><h3>代客設定版</h3>
+          <div class="who">不想碰電腦、要有人弄到好的人（含小店、工作室）</div></div>
+        <div class="price-tag">NT$4,800<small style="font-size:15px;font-weight:400;color:var(--muted)"> + 1,200/年</small></div>
+      </div>
+      <p style="margin:12px 0 0;font-size:14.5px;color:#4a5568">你給我資料和照片，我幫你做好、上線、測過分享沒問題。年費含一年內的修改與協助。</p>
+    </div>
+
+    <div class="card">
+      <div class="tier">
+        <div><h3>商業／白標授權</h3>
+          <div class="who">設計公司、行銷代理商、名片印刷廠</div></div>
+        <div class="price-tag">NT$18,000<small style="font-size:15px;font-weight:400;color:var(--muted)"> /年</small></div>
+      </div>
+      <p style="margin:12px 0 0;font-size:14.5px;color:#4a5568">可為你的客戶製作多張名片，掛自家品牌另議。</p>
+    </div>
+
+    <div class="btns" style="margin-top:22px">
+      <a class="btn primary" id="buyBtn" href="#">立即購買自助版 NT$1,490
+        <span class="sub">數位下載・購買後馬上拿到檔案</span></a>
+    </div>
+  </section>
+
+  <!-- ═══════════ FAQ ═══════════ -->
+  <section style="padding-top:0">
+    <h2>常見問題</h2>
+    <details><summary>我不會寫程式，真的做得出來嗎？</summary>
+      <p>可以。你只需要做三件事：改一個文字檔、上傳照片、複製貼上一行指令。說明書有逐步圖文與錯誤對照表，卡住可以來信問。</p></details>
+    <details><summary>要付月費嗎？</summary>
+      <p>不用。分享功能與網站代管都用免費資源，你只付這筆一次性的費用。</p></details>
+    <details><summary>要申請 LINE 官方帳號或 LIFF 嗎？</summary>
+      <p>都不用。分享功能已經接好<b>共用的服務</b>，你只要填自己的網址（一行設定）。想完全不依賴共用服務的人，說明書附錄有自己申請的步驟。</p></details>
+    <details><summary>共用分享服務，會不會分享成別人的名片？</summary>
+      <p>不會。卡片會帶著指向<b>你自己網站</b>上的資料去分享，共用服務只是把它讀回來幫你送出。每個人分享出去的都還是自己的名片。</p></details>
+    <details><summary>可以改成我自己的顏色、換排版嗎？</summary>
+      <p>改 3 個色碼就整體換色，說明書有寫是哪三個。版型固定（6 張卡的結構一樣），可換的是內容、圖片、配色；要不同排版屬於客製範圍。</p></details>
+    <details><summary>我可以幫客戶做嗎？</summary>
+      <p>自助版限一個品牌。你要服務多個客戶，請選商業授權版。</p></details>
+    <details><summary>LINE 之後改規則怎麼辦？</summary>
+      <p>用的是 LINE 官方公開功能，若官方調整我會盡快更新，同版本免費更新。</p></details>
+    <div class="note" style="margin-top:16px">
+      本商品為數位下載，一經下載無法退貨。購買前請先開示範頁面確認符合需求。
+    </div>
+  </section>
+
+  <footer>
+    LINE 電子名片模板　·　示範站：<a href="https://ericlin1994.github.io/line-ecard-demo/" target="_blank" rel="noopener">line-ecard-demo</a>
+  </footer>
+
+  <!-- ═══════════ 手機底部固定 CTA ═══════════ -->
+  <div class="sticky">
+    <div class="p">NT$1,490<small>買斷・無月費</small></div>
+    <a class="btn primary" id="buyBtnSticky" href="#">立即購買</a>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════════
+   唯一要改的地方：Gumroad（或其他金流）商品網址。
+   填上之後，頁面上三顆購買按鈕會自動生效。
+   ════════════════════════════════════════════════════════════ */
+const BUY_URL = '';          // ← 例：'https://你的帳號.gumroad.com/l/line-ecard'
+
+(function(){
+  const btns = ['buyBtnTop','buyBtn','buyBtnSticky'].map(id => document.getElementById(id));
+  if(BUY_URL){
+    btns.forEach(b => { if(b){ b.href = BUY_URL; b.target = '_blank'; b.rel = 'noopener'; } });
+    return;
+  }
+  // 還沒接通金流：按鈕誠實說明狀態，不放假的購買連結
+  btns.forEach(b => {
+    if(!b) return;
+    b.addEventListener('click', e => {
+      e.preventDefault();
+      alert('購買連結開通中。\n\n目前先看示範頁確認是否符合需求：\nhttps://ericlin1994.github.io/line-ecard-demo/');
+    });
+  });
+})();
+</script>
+</body>
+</html>
