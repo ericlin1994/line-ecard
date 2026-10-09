@@ -269,6 +269,19 @@ const BUY_URL = '';          // ← 例：'https://你的帳號.gumroad.com/l/li
     });
   });
 })();
+
+/* 底部固定列：開場時先不出現（上方已經有一模一樣的按鈕，會壓到它），
+   等使用者滑過主 CTA 之後再冒出來。 */
+(function(){
+  const bar = document.querySelector('.sticky');
+  const anchor = document.getElementById('buyBtnTop');
+  if(!bar || !anchor) return;
+  if(!('IntersectionObserver' in window)){ return; }
+  bar.style.display = 'none';
+  new IntersectionObserver(function(entries){
+    bar.style.display = entries[0].isIntersecting ? 'none' : 'flex';
+  }, { threshold: 0 }).observe(anchor);
+})();
 </script>
 </body>
 </html>
