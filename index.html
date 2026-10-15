@@ -12,8 +12,12 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💳</text></svg>">
 <style>
   :root{
-    --navy:#253043; --dark:#1D2534; --copper:#C4835A; --copper-d:#996646;
-    --beige:#F5F1E8; --muted:#8A8F98; --line:#E3DED4; --white:#fff;
+    /* 亮棕 --copper 只用在深色底；淺色底的文字／色塊改用深棕 --copper-text（對冷白底 5.9:1、對白 6.3:1） */
+    --navy:#253043; --dark:#1D2534; --copper:#C4835A; --copper-d:#996646; --copper-text:#8A5227;
+    /* 灰字 #5F6672（對冷白底 5.6:1、對白 6.0:1）。
+       頁面底色刻意選冷調紙白 #F6F7F9：與深藍 #253043 同色系，讓棕金成為唯一暖色重點，
+       不用暖米色（變數名 --beige 沿用以免動到其他引用，實際值已不是米色）；分隔線同步改冷灰 */
+    --beige:#F6F7F9; --muted:#5F6672; --line:#DFE2E8; --white:#fff;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%}
@@ -32,7 +36,6 @@
 
   /* ── Hero ── */
   .hero{background:linear-gradient(170deg,var(--navy),var(--dark));color:var(--white);padding:38px 22px 34px}
-  .kicker{color:var(--copper);font-weight:700;font-size:14px;letter-spacing:2px;margin-bottom:14px}
   .hero h1{color:var(--white)}
   .hero h1 em{color:var(--copper);font-style:normal}
   .hero .lede{color:#cfd6e0;margin-top:16px}
@@ -42,12 +45,13 @@
   .btns{display:flex;flex-direction:column;gap:10px;margin-top:26px}
   .btn{display:block;text-align:center;padding:16px 20px;border-radius:14px;font-weight:700;
        font-size:17px;text-decoration:none;transition:transform .12s, filter .12s;cursor:pointer;border:0}
-  .btn.primary{background:linear-gradient(180deg,var(--copper),var(--copper-d));color:var(--white);
-       border:1px solid #8a5a3c;box-shadow:0 5px 0 #7d4f34}
-  .btn.primary:active{transform:translateY(4px);box-shadow:0 1px 0 #7d4f34}
+  /* 白字 ≥4.5:1：漸層從 #A0643A（4.8:1）到 #8A5227（6.3:1），仍有棕金漸層感 */
+  .btn.primary{background:linear-gradient(180deg,#A0643A,var(--copper-text));color:var(--white);
+       border:1px solid #6F4020;box-shadow:0 5px 0 #5E3519}
+  .btn.primary:active{transform:translateY(4px);box-shadow:0 1px 0 #5E3519}
   .btn.ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.35)}
   .btn.ghost:active{background:rgba(255,255,255,.08)}
-  .btn .sub{display:block;font-weight:400;font-size:13px;opacity:.85;margin-top:2px}
+  .btn .sub{display:block;font-weight:400;font-size:13px;margin-top:2px}
 
   /* ── 卡片 ── */
   .card{background:var(--white);border-radius:16px;padding:22px;margin-bottom:14px;
@@ -65,7 +69,7 @@
 
   ul.plain{list-style:none}
   ul.plain li{padding-left:26px;position:relative;margin-bottom:9px}
-  ul.plain li:before{content:"✔";position:absolute;left:0;color:var(--copper);font-weight:700}
+  ul.plain li:before{content:"✔";position:absolute;left:0;color:var(--copper-text);font-weight:700}
 
   .price-tag{font-size:30px;font-weight:800;color:var(--navy);letter-spacing:-.5px}
   .price-tag s{font-size:17px;color:var(--muted);font-weight:400;margin-left:8px}
@@ -73,15 +77,15 @@
       font-weight:700;padding:3px 10px;border-radius:99px;margin-left:8px;vertical-align:middle}
   .tier{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
   .tier .who{font-size:13.5px;color:var(--muted)}
-  .pick{border:2px solid var(--copper);position:relative}
-  .pick:before{content:"最多人選";position:absolute;top:-11px;left:18px;background:var(--copper);
+  .pick{border:2px solid var(--copper-text);position:relative}
+  .pick:before{content:"最多人選";position:absolute;top:-11px;left:18px;background:var(--copper-text);
       color:#fff;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:99px}
 
   details{background:var(--white);border-radius:14px;padding:16px 20px;margin-bottom:10px;
       box-shadow:0 2px 10px rgba(37,48,67,.05)}
   details summary{font-weight:700;cursor:pointer;font-size:16px;list-style:none}
   details summary::-webkit-details-marker{display:none}
-  details summary:after{content:"＋";float:right;color:var(--copper);font-weight:700}
+  details summary:after{content:"＋";float:right;color:var(--copper-text);font-weight:700}
   details[open] summary:after{content:"－"}
   details p{margin-top:10px;color:#4a5568;font-size:15px}
 
@@ -94,12 +98,12 @@
       display:flex;align-items:center;justify-content:center}
   footer{background:var(--dark);color:#9aa4b2;font-size:13.5px;text-align:center;padding:30px 22px;margin-top:auto}
   footer a{color:#c3ccd9}
-  .sticky{position:sticky;bottom:0;background:rgba(245,241,232,.94);backdrop-filter:blur(8px);
+  .sticky{position:sticky;bottom:0;background:rgba(246,247,249,.94);backdrop-filter:blur(8px);
       border-top:1px solid var(--line);padding:11px 18px calc(11px + env(safe-area-inset-bottom));
       display:flex;gap:12px;align-items:center}
   .sticky .p{font-weight:800;font-size:19px;white-space:nowrap}
   .sticky .p small{display:block;font-weight:400;font-size:11.5px;color:var(--muted)}
-  .sticky .btn{flex:1;padding:13px 16px;font-size:16px;box-shadow:0 4px 0 #7d4f34}
+  .sticky .btn{flex:1;padding:13px 16px;font-size:16px;box-shadow:0 4px 0 #5E3519}
 </style>
 </head>
 <body>
@@ -107,8 +111,7 @@
 
   <!-- ═══════════ Hero ═══════════ -->
   <div class="hero">
-    <div class="kicker">LINE 電子名片模板</div>
-    <h1>把你的名片<br>變成<em>會被一直轉傳</em>的卡片</h1>
+    <h1>LINE 電子名片模板：<br>把你的名片變成<em>會被一直轉傳</em>的卡片</h1>
     <p class="lede">收到的人可以在 LINE 裡左右滑動看你的服務、作品、聯絡方式，覺得不錯就一鍵轉給別人——你的名片自己跑業務。</p>
     <div class="btns">
       <a class="btn primary" id="buyBtnTop" href="#">立即購買 NT$1,490
