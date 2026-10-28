@@ -114,8 +114,8 @@
     <h1>LINE 電子名片模板：<br>把你的名片變成<em>會被一直轉傳</em>的卡片</h1>
     <p class="lede">收到的人可以在 LINE 裡左右滑動看你的服務、作品、聯絡方式，覺得不錯就一鍵轉給別人——你的名片自己跑業務。</p>
     <div class="btns">
-      <a class="btn primary" id="buyBtnTop" href="#">立即購買 NT$1,490
-        <span class="sub">一次買斷・沒有月費・早鳥 NT$990（前 20 名）</span></a>
+      <a class="btn primary" id="buyBtnTop" href="#">立即購買 NT$990
+        <span class="sub">原價 NT$1,490・早鳥前 20 名・一次買斷沒有月費</span></a>
       <a class="btn ghost" href="https://ericlin1994.github.io/line-ecard-demo/" target="_blank" rel="noopener">先看示範（用 LINE 開啟可試分享）</a>
     </div>
     <img src="img/hero.png" alt="LINE 電子名片：深色卡片加上三顆功能按鈕">
@@ -186,9 +186,9 @@
 
     <div class="card pick">
       <div class="tier">
-        <div><h3>自助版 <span class="badge">早鳥 NT$990・前 20 名</span></h3>
+        <div><h3>自助版 <span class="badge">早鳥・前 20 名</span></h3>
           <div class="who">會複製貼上、想自己搞定的人</div></div>
-        <div class="price-tag">NT$1,490<s>NT$1,990</s></div>
+        <div class="price-tag">NT$990<s>NT$1,490</s></div>
       </div>
       <p style="margin:12px 0 0;font-size:14.5px;color:#4a5568">買斷・一次交付全部檔案與說明書・同版本免費更新</p>
     </div>
@@ -212,7 +212,7 @@
     </div>
 
     <div class="btns" style="margin-top:22px">
-      <a class="btn primary" id="buyBtn" href="#">立即購買自助版 NT$1,490
+      <a class="btn primary" id="buyBtn" href="#">立即購買自助版 NT$990
         <span class="sub">數位下載・購買後馬上拿到檔案</span></a>
     </div>
   </section>
@@ -245,17 +245,17 @@
 
   <!-- ═══════════ 手機底部固定 CTA ═══════════ -->
   <div class="sticky">
-    <div class="p">NT$1,490<small>買斷・無月費</small></div>
+    <div class="p">NT$990<small>早鳥・買斷無月費</small></div>
     <a class="btn primary" id="buyBtnSticky" href="#">立即購買</a>
   </div>
 </div>
 
 <script>
 /* ════════════════════════════════════════════════════════════
-   唯一要改的地方：Gumroad（或其他金流）商品網址。
+   唯一要改的地方：Portaly 商品頁網址。
    填上之後，頁面上三顆購買按鈕會自動生效。
    ════════════════════════════════════════════════════════════ */
-const BUY_URL = 'https://portaly.cc/ericlin92269';   // ← Portaly 商品頁（改版只改這裡）
+const BUY_URL = 'https://portaly.cc/ericlin92269/product/of8D6oDhCV6VqTv2he93';   // ← Portaly 商品頁（改版只改這裡）
 
 (function(){
   const btns = ['buyBtnTop','buyBtn','buyBtnSticky'].map(id => document.getElementById(id));
